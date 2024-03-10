@@ -1,0 +1,17 @@
+# vscode
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# node
+node_modules/
+dist/
+.env
+
+# logs
+logs/
+**/*.log
+pnpm-debug.log*
+
+# misc
+**/.DS_Store

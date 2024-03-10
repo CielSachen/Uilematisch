@@ -1,0 +1,55 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "lib": [
+      "ESNext"
+    ],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "module": "NodeNext",
+    "rootDir": "src/",
+    "moduleResolution": "NodeNext",
+    "baseUrl": "src/",
+    "paths": {
+      "@client": [
+        "client/index.ts"
+      ],
+      "@config": [
+        "config.ts"
+      ],
+      "@constants": [
+        "constants/index.ts"
+      ],
+      "@interfaces": [
+        "interfaces/index.ts"
+      ],
+      "@models": [
+        "models/index.ts"
+      ],
+      "@services/*": [
+        "services/*"
+      ],
+      "@utils": [
+        "utils/index.ts"
+      ]
+    },
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "checkJs": true,
+    "outDir": "dist/",
+    "importHelpers": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "strictNullChecks": false,
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "src/"
+  ],
+  "tsc-alias": {
+    "verbose": true
+  }
+}

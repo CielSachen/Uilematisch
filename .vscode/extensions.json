@@ -1,0 +1,10 @@
+{
+	"recommendations": [
+		"aaron-bond.better-comments",
+		"dbaeumer.vscode-eslint",
+		"dotenv.dotenv-vscode",
+		"mongodb.mongodb-vscode",
+		"pmneo.tsimporter",
+		"redhat.vscode-yaml"
+	]
+}
