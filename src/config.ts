@@ -37,16 +37,22 @@ export const configSchema = z.object({
       ]),
     }),
   }),
-  environment: z.union([z.literal('development'), z.literal('production')]),
-  logLevel: z.union([
-    z.literal('error'),
-    z.literal('warn'),
-    z.literal('info'),
-    z.literal('http'),
-    z.literal('verbose'),
-    z.literal('debug'),
-    z.literal('silly'),
-  ]),
+  environment: z
+    .union([z.literal('development'), z.literal('production')])
+    .optional()
+    .default('production'),
+  logLevel: z
+    .union([
+      z.literal('error'),
+      z.literal('warn'),
+      z.literal('info'),
+      z.literal('http'),
+      z.literal('verbose'),
+      z.literal('debug'),
+      z.literal('silly'),
+    ])
+    .optional()
+    .default('info'),
   tenorKey: z.string(),
 });
 
