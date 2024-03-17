@@ -24,6 +24,6 @@ try {
 
   void client.login(config.discord.bot.token);
 }
-catch (error) {
-  logger.error('Failed to login the bot.', error);
+catch (err) {
+  logger.error('Failed to login the bot.', err);
 }

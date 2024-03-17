@@ -47,9 +47,9 @@ try {
 
   logger.info(`Successfully registered ${result.length} commands.`, { applicationId: config.discord.bot.id });
 }
-catch (error) {
+catch (err) {
   logger.error('Failed to register commands.', {
     applicationId: config.discord.bot.id,
-    error,
+    error: err,
   });
 }

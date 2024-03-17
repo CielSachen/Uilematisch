@@ -26,10 +26,10 @@ export default {
       try {
         await slashCommand.autocomplete(interaction);
       }
-      catch (error) {
+      catch (err) {
         logger.error(`Failed to execute the autocomplete for "${interaction.commandName}".`, {
           commandName: interaction.commandName,
-          error,
+          error: err,
         });
       }
     }
@@ -71,10 +71,10 @@ export default {
       try {
         await command.execute(interaction);
       }
-      catch (error) {
+      catch (err) {
         logger.error(`Failed to execute command "${interaction.commandName}".`, {
           commandName: interaction.commandName,
-          error,
+          error: err,
         });
 
         const errorReply = {
@@ -100,10 +100,10 @@ export default {
       try {
         await messageComponent.execute(interaction);
       }
-      catch (error) {
+      catch (err) {
         logger.error(`Failed to execute message component "${interaction.customId}".`, {
           customId: interaction.customId,
-          error,
+          error: err,
         });
       }
     }
@@ -118,10 +118,10 @@ export default {
       try {
         await modal.execute(interaction);
       }
-      catch (error) {
+      catch (err) {
         logger.error(`Failed to execute modal "${interaction.customId}".`, {
           customId: interaction.customId,
-          error,
+          error: err,
         });
       }
     }
