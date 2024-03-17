@@ -1,14 +1,10 @@
 import 'dotenv/config';
 
 import type { ImageURLOptions } from 'discord.js';
-import type { ConnectOptions } from 'mongoose';
 import { z } from 'zod';
 
 export const configSchema = z.object({
-  database: z.object({
-    uri: z.string().startsWith('mongodb+srv://'),
-    options: z.object({ dbName: z.string() }),
-  }),
+  databaseURI: z.string().startsWith('mongodb+srv://'),
   discord: z.object({
     bot: z.object({
       id: z.string(),
@@ -57,10 +53,7 @@ export const configSchema = z.object({
 });
 
 export const config = configSchema.parse({
-  database: {
-    uri: process.env.MONGODB_URI,
-    options: { dbName: process.env.DB_NAME } satisfies ConnectOptions,
-  },
+  databaseURI: process.env.MONGODB_URI,
   discord: {
     bot: {
       id: process.env.APPLICATION_ID,

@@ -20,7 +20,7 @@ try {
   await client.loadComponents();
   await client.loadEvents();
 
-  await connect(config.database.uri, config.database.options);
+  await connect(config.databaseURI);
 
   void client.login(config.discord.bot.token);
 }
