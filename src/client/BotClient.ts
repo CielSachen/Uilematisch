@@ -15,27 +15,21 @@ import type {
   SlashCommand,
 } from '@interfaces';
 import { isCommand, isComponent, isEvent, logger } from '@utils';
-import { Client, Collection } from 'discord.js';
+import { Client, Collection, GatewayIntentBits } from 'discord.js';
 import { DisTube, type DisTubeEvents } from 'distube';
 import mongoose from 'mongoose';
 
 declare module 'discord.js' {
   interface BaseInteraction {
-    readonly client: ExtendedClient<true>;
+    readonly client: BotClient<true>;
   }
 }
 
-/**
- * The main hub for interacting with the Discord API and the starting point for any bot, extended to
- * include:
- * - `DisTube` instance used to play music.
- * - `Collection`s of commands, message components, and modals, along with their loaders.
- * - Listeners for events, along with a loader.
- */
-export class ExtendedClient<Ready extends boolean = boolean> extends Client<Ready> {
+/** Describes the `Client` used by the Discord bot. */
+export class BotClient<Ready extends boolean = boolean> extends Client<Ready> {
   /**
    * The `DisTube` instance used by the bot to play music.
-   * @see {@link https://distube.js.org/#/ DisTube} for greater detail.
+   * @see {@link https://distube.js.org/#/ DisTube documentation} for more information.
    */
   public readonly distube = new DisTube(this, {
     plugins: [
@@ -53,7 +47,7 @@ export class ExtendedClient<Ready extends boolean = boolean> extends Client<Read
     emitAddListWhenCreatingQueue: false,
   });
 
-  /** The collection storing all of the bot's slash commands' cooldowns. */
+  /** The collection storing all of the bot's command cooldowns. */
   public cooldowns = new Collection<string, Collection<string, number>>();
 
   /** The collection storing all of the bot's context menu commands. */
@@ -66,6 +60,20 @@ export class ExtendedClient<Ready extends boolean = boolean> extends Client<Read
   public selectMenus = new Collection<string, SelectMenu>();
   /** The collection storing all of the bot's modals. */
   public modals = new Collection<string, Modal>();
+
+  /** Constructs a new Discord bot `Client`. */
+  constructor() {
+    super({ intents: [
+      GatewayIntentBits.Guilds,
+      GatewayIntentBits.GuildMembers,
+      GatewayIntentBits.GuildEmojisAndStickers,
+      GatewayIntentBits.GuildIntegrations,
+      GatewayIntentBits.GuildVoiceStates,
+      GatewayIntentBits.GuildPresences,
+      GatewayIntentBits.GuildMessages,
+      GatewayIntentBits.DirectMessages,
+    ] });
+  }
 
   /** Loads the command files into their respective command collections. */
   public async loadCommands() {

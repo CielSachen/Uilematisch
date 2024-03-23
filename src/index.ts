@@ -1,19 +1,9 @@
-import { ExtendedClient } from '@client';
+import { BotClient } from '@client';
 import { config } from '@config';
 import { logger } from '@utils';
-import { GatewayIntentBits } from 'discord.js';
 import { connect } from 'mongoose';
 
-const client = new ExtendedClient({ intents: [
-  GatewayIntentBits.Guilds,
-  GatewayIntentBits.GuildMembers,
-  GatewayIntentBits.GuildEmojisAndStickers,
-  GatewayIntentBits.GuildIntegrations,
-  GatewayIntentBits.GuildVoiceStates,
-  GatewayIntentBits.GuildPresences,
-  GatewayIntentBits.GuildMessages,
-  GatewayIntentBits.DirectMessages,
-] });
+const client = new BotClient();
 
 try {
   await client.loadCommands();
