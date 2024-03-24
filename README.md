@@ -1,8 +1,10 @@
 # Uilematisch
 
-[![Node.js](https://img.shields.io/badge/Node.js-20.11.1-339933?style=flat-square&logo=Node.js&logoColor=339933&labelColor=222222)](https://nodejs.org)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.4.2-3178C6?style=flat-square&logo=TypeScript&logoColor=3178C6&labelColor=222222)](https://www.typescriptlang.org)
-[![Discord.js](https://img.shields.io/badge/discord.js-14.14.1-5865F2?style=flat-square&logo=Discord&logoColor=5865F2&labelColor=222222)](https://discord.js.org)
+![Node.js Static Badge](https://img.shields.io/badge/Node.js-20.x-44883E?style=flat-square&logo=node.js)
+![pnpm Static Badge](https://img.shields.io/badge/pnpm-8.x-orange?style=flat-square&logo=pnpm)
+![TypeScript Static Badge](https://img.shields.io/badge/TypeScript-5.4.x-3178C6?style=flat-square&logo=typescript)
+![discord.js Static Badge](https://img.shields.io/badge/discord.js-14.x-5865F2?style=flat-square&logo=discord)
+![mongoose Static Badge](https://img.shields.io/badge/mongoose-8.x-800?style=flat-square&logo=mongoose&logoColor=800)
 
 A discord bot I develop for myself when I'm bored.
 
