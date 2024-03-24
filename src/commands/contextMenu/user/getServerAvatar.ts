@@ -1,4 +1,4 @@
-import { config } from '@config';
+import { imageURLOptions } from '@configs/discord.js';
 import { colors } from '@constants';
 import type { ContextMenuCommand } from '@interfaces';
 import { ApplicationCommandType, ContextMenuCommandBuilder, EmbedBuilder, type UserContextMenuCommandInteraction } from 'discord.js';
@@ -12,7 +12,7 @@ export default {
     const { guild, targetUser } = interaction;
 
     const targetMember = await guild.members.fetch(targetUser);
-    const targetMemberDisplayAvatarURL = targetUser.displayAvatarURL(config.discord.imageUrl);
+    const targetMemberDisplayAvatarURL = targetUser.displayAvatarURL(imageURLOptions);
 
     const embed = new EmbedBuilder()
       .setColor(targetMember.displayHexColor === '#000000'
@@ -24,7 +24,7 @@ export default {
       .setImage(targetMemberDisplayAvatarURL)
       .setFooter({
         text: guild.name,
-        iconURL: guild.iconURL(config.discord.imageUrl),
+        iconURL: guild.iconURL(imageURLOptions),
       });
 
     await interaction.reply({

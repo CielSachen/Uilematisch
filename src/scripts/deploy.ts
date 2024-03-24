@@ -1,7 +1,7 @@
 import { readdir, stat } from 'node:fs/promises';
 import { join } from 'node:path';
 
-import { config } from '@config';
+import { env } from '@configs/env.js';
 import type { Command } from '@interfaces';
 import { isCommand, logger } from '@utils';
 import { REST, type RESTPostAPIApplicationCommandsJSONBody, type RESTPutAPIApplicationCommandsResult, Routes } from 'discord.js';
@@ -38,18 +38,18 @@ for (const folder of commandFolders) {
   }
 }
 
-const rest = new REST().setToken(config.discord.bot.token);
+const rest = new REST().setToken(env.DISCORD_TOKEN);
 
 try {
   logger.verbose(`Started registering ${commandData.length} commands.`);
 
-  const result = await rest.put(Routes.applicationCommands(config.discord.bot.id), { body: commandData }) as RESTPutAPIApplicationCommandsResult;
+  const result = await rest.put(Routes.applicationCommands(env.APPLICATION_ID), { body: commandData }) as RESTPutAPIApplicationCommandsResult;
 
-  logger.info(`Successfully registered ${result.length} commands.`, { applicationId: config.discord.bot.id });
+  logger.info(`Successfully registered ${result.length} commands.`, { applicationId: env.APPLICATION_ID });
 }
 catch (err) {
   logger.error('Failed to register commands.', {
-    applicationId: config.discord.bot.id,
+    applicationId: env.APPLICATION_ID,
     error: err,
   });
 }

@@ -1,4 +1,4 @@
-import { config } from '@config';
+import { imageURLOptions } from '@configs/discord.js';
 import type { SlashCommand } from '@interfaces';
 import {
   type Collection,
@@ -81,7 +81,7 @@ export default {
       )
       .setFooter({
         text: guild.name,
-        iconURL: guild.iconURL(config.discord.imageUrl),
+        iconURL: guild.iconURL(imageURLOptions),
       });
 
     await interaction.reply({

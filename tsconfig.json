@@ -14,8 +14,8 @@
       "@client": [
         "client/index.ts"
       ],
-      "@config": [
-        "config.ts"
+      "@configs/*": [
+        "configs/*"
       ],
       "@constants": [
         "constants/index.ts"

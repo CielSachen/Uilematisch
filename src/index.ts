@@ -1,5 +1,5 @@
 import { BotClient } from '@client';
-import { config } from '@config';
+import { env } from '@configs/env.js';
 import { logger } from '@utils';
 import { connect } from 'mongoose';
 
@@ -10,9 +10,9 @@ try {
   await client.loadComponents();
   await client.loadEvents();
 
-  await connect(config.databaseURI);
+  await connect(env.MONGODB_URI);
 
-  void client.login(config.discord.bot.token);
+  void client.login(env.TENOR_KEY);
 }
 catch (err) {
   logger.error('Failed to login the bot.', err);

@@ -1,4 +1,4 @@
-import { config } from '@config';
+import { imageURLOptions } from '@configs/discord.js';
 import { colors } from '@constants';
 import type { SlashCommand } from '@interfaces';
 import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
@@ -34,7 +34,7 @@ export default {
     const embed = new EmbedBuilder();
 
     if (chosenType === 'discord') {
-      const chosenUserAvatarURL = chosenUser.avatarURL(config.discord.imageUrl);
+      const chosenUserAvatarURL = chosenUser.avatarURL(imageURLOptions);
 
       embed
         .setColor('Blurple')
@@ -45,7 +45,7 @@ export default {
     }
     else if (chosenType === 'guild') {
       const chosenMember = await guild.members.fetch(chosenUser);
-      const chosenMemberDisplayAvatarURL = chosenMember.displayAvatarURL(config.discord.imageUrl);
+      const chosenMemberDisplayAvatarURL = chosenMember.displayAvatarURL(imageURLOptions);
 
       embed
         .setColor(chosenMember.displayHexColor === '#000000'
@@ -57,7 +57,7 @@ export default {
         .setImage(chosenMemberDisplayAvatarURL)
         .setFooter({
           text: guild.name,
-          iconURL: guild.iconURL(config.discord.imageUrl),
+          iconURL: guild.iconURL(imageURLOptions),
         });
     }
 

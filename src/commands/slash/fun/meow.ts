@@ -1,5 +1,5 @@
 import { Tenor } from '@cielsachen/tenor-v2-wrapper';
-import { config } from '@config';
+import { env } from '@configs/env.js';
 import type { SlashCommand } from '@interfaces';
 import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 
@@ -8,7 +8,7 @@ export default {
     .setName('meow')
     .setDescription('Reply with a random meow GIF'),
   async execute(interaction) {
-    const tenor = new Tenor(config.tenorKey);
+    const tenor = new Tenor(env.TENOR_KEY);
 
     const response = await tenor.fetchGIFsByQuery('meow', {
       contentfilter: 'high',

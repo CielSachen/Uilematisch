@@ -1,4 +1,5 @@
-import { config } from '@config';
+import { imageURLOptions } from '@configs/discord.js';
+import { env } from '@configs/env.js';
 import { buttons, colors, enums } from '@constants';
 import type { SlashCommand } from '@interfaces';
 import { Warning } from '@models';
@@ -80,17 +81,17 @@ export default {
     const buttonRow = new ActionRowBuilder<ButtonBuilder>().addComponents(buttons.deleteMessage);
 
     if (subcommand === 'bot') {
-      const owner = await guild.members.fetch(config.discord.bot.ownerId);
+      const owner = await guild.members.fetch(env.OWNER_ID);
 
       embed
         .setColor(colors.bot)
         .setTitle(client.user.tag)
         .setAuthor({
           name: owner.displayName,
-          iconURL: owner.displayAvatarURL(config.discord.imageUrl),
+          iconURL: owner.displayAvatarURL(imageURLOptions),
         })
         .setDescription(`${interaction.user.displayName} is a discord bot I develop for myself when I'm bored!`)
-        .setThumbnail(client.user.displayAvatarURL(config.discord.imageUrl))
+        .setThumbnail(client.user.displayAvatarURL(imageURLOptions))
         .addFields(
           {
             name: 'Uptime',
@@ -134,7 +135,7 @@ export default {
           : chosenRole.name)
         .setAuthor({
           name: guild.name,
-          iconURL: guild.iconURL(config.discord.imageUrl),
+          iconURL: guild.iconURL(imageURLOptions),
         })
         .addFields(
           {
@@ -181,7 +182,7 @@ export default {
         .setFooter({ text: `ID: ${chosenRole.id}` });
 
       if (chosenRole.icon) {
-        embed.setThumbnail(chosenRole.iconURL(config.discord.imageUrl));
+        embed.setThumbnail(chosenRole.iconURL(imageURLOptions));
 
         await interaction.reply({
           embeds: [embed],
@@ -207,7 +208,7 @@ export default {
         .setColor('Blurple')
         .setTitle(guild.name)
         .setDescription(guild.description ?? 'No description has been set.')
-        .setThumbnail(guild.iconURL(config.discord.imageUrl))
+        .setThumbnail(guild.iconURL(imageURLOptions))
         .addFields(
           {
             name: 'Preferred Locale',
@@ -285,7 +286,7 @@ export default {
             value: time(guild.createdTimestamp, 'D'),
           },
         )
-        .setImage(guild.bannerURL(config.discord.imageUrl))
+        .setImage(guild.bannerURL(imageURLOptions))
         .setFooter({ text: `ID: ${guild.id}` });
 
       const menuSelectMenuRow = new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(new StringSelectMenuBuilder()
@@ -332,7 +333,7 @@ export default {
           ? quote(getMemberActivities(chosenMember).join('\n'))
           : ''}
         `)
-        .setThumbnail(chosenUser.displayAvatarURL(config.discord.imageUrl))
+        .setThumbnail(chosenUser.displayAvatarURL(imageURLOptions))
         .addFields(
           {
             name: 'Status',
@@ -419,7 +420,7 @@ export default {
       });
 
       if (chosenUser.banner) {
-        embed.setImage(chosenUser.bannerURL(config.discord.imageUrl));
+        embed.setImage(chosenUser.bannerURL(imageURLOptions));
 
         await interaction.reply({
           embeds: [embed],
@@ -458,7 +459,7 @@ export default {
         .setTitle('Warning Info')
         .setAuthor({
           name: warningGuild.name,
-          iconURL: warningGuild.iconURL(config.discord.imageUrl),
+          iconURL: warningGuild.iconURL(imageURLOptions),
         })
         .setDescription(quote(warning.reason))
         .setThumbnail('https://images.emojiterra.com/twitter/v14.0/1024px/26a0.png')

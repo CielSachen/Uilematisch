@@ -1,6 +1,6 @@
 import 'winston-daily-rotate-file';
 
-import { config } from '@config';
+import { env } from '@configs/env.js';
 import { createLogger, format, transports } from 'winston';
 import { consoleFormat } from 'winston-console-format';
 
@@ -30,9 +30,9 @@ const logger = createLogger({
   transports: [combinedTransport, errorTransport],
 });
 
-if (config.environment !== 'production') {
+if (env.NODE_ENV !== 'production') {
   const consoleTransport = new transports.Console({
-    level: config.logLevel,
+    level: env.LOG_LEVEL,
     format: format.combine(
       format.colorize({ all: true }),
       format.ms(),

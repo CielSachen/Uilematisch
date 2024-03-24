@@ -1,4 +1,4 @@
-import { config } from '@config';
+import { imageURLOptions } from '@configs/discord.js';
 import type { ContextMenuCommand } from '@interfaces';
 import { ApplicationCommandType, ContextMenuCommandBuilder, EmbedBuilder, type UserContextMenuCommandInteraction } from 'discord.js';
 
@@ -9,7 +9,7 @@ export default {
   async execute(interaction: UserContextMenuCommandInteraction) {
     const { targetUser } = interaction;
 
-    const targetUserAvatarURL = targetUser.avatarURL(config.discord.imageUrl);
+    const targetUserAvatarURL = targetUser.avatarURL(imageURLOptions);
 
     const embed = new EmbedBuilder()
       .setColor('Blurple')

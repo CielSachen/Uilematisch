@@ -1,4 +1,4 @@
-import { config } from '@config';
+import { imageURLOptions } from '@configs/discord.js';
 import { buttons, enums } from '@constants';
 import type { SelectMenu } from '@interfaces';
 import { stripIndent } from 'common-tags';
@@ -27,8 +27,8 @@ export default {
       .setColor('Blurple')
       .setTitle(guild.name)
       .setDescription(guild.description ?? 'No description has been set.')
-      .setThumbnail(guild.iconURL(config.discord.imageUrl))
-      .setImage(guild.bannerURL(config.discord.imageUrl))
+      .setThumbnail(guild.iconURL(imageURLOptions))
+      .setImage(guild.bannerURL(imageURLOptions))
       .setFooter({ text: `ID: ${guild.id}` });
 
     const menuSelectMenuRow = new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(new StringSelectMenuBuilder()

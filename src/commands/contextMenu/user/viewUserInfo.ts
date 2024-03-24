@@ -1,4 +1,4 @@
-import { config } from '@config';
+import { imageURLOptions } from '@configs/discord.js';
 import { buttons, colors, enums } from '@constants';
 import type { ContextMenuCommand } from '@interfaces';
 import {
@@ -49,7 +49,7 @@ export default {
         ? quote(getMemberActivities(targetMember).join('\n'))
         : ''}
       `)
-      .setThumbnail(targetUser.displayAvatarURL(config.discord.imageUrl))
+      .setThumbnail(targetUser.displayAvatarURL(imageURLOptions))
       .addFields(
         {
           name: 'Status',
@@ -138,7 +138,7 @@ export default {
     });
 
     if (targetUser.banner) {
-      embed.setImage(targetUser.bannerURL(config.discord.imageUrl));
+      embed.setImage(targetUser.bannerURL(imageURLOptions));
 
       await interaction.reply({
         embeds: [embed],

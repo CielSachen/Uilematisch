@@ -1,4 +1,4 @@
-import { config } from '@config';
+import { imageURLOptions } from '@configs/discord.js';
 import { colors, enums } from '@constants';
 import type { SlashCommand } from '@interfaces';
 import {
@@ -353,7 +353,7 @@ export default {
         .setURL(song.url)
         .setAuthor({
           name: song.member.displayName,
-          iconURL: song.user.displayAvatarURL(config.discord.imageUrl),
+          iconURL: song.user.displayAvatarURL(imageURLOptions),
         })
         .setDescription(bold(`${queue.formattedCurrentTime} / ${queue.formattedDuration} (${queuePercentDuration}%)`))
         .setThumbnail(song.thumbnail ?? 'https://images.emojiterra.com/twitter/v14.0/1024px/1f4bf.png');

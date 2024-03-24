@@ -1,4 +1,4 @@
-import { config } from '@config';
+import { imageURLOptions } from '@configs/discord.js';
 import type { SlashCommand } from '@interfaces';
 import { Warning } from '@models';
 import {
@@ -49,7 +49,7 @@ export default {
       .setTitle('Warned a Member')
       .setAuthor({
         name: guild.name,
-        iconURL: guild.iconURL(config.discord.imageUrl),
+        iconURL: guild.iconURL(imageURLOptions),
       })
       .setDescription(quote(givenReason))
       .addFields(
